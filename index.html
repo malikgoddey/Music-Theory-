@@ -14,6 +14,9 @@
         <a href="#topics">Topics</a>
         <a href="#visualizer">Visualizer</a>
         <a href="#quiz">Quiz</a>
+        <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          Dark mode
+        </button>
       </div>
     </nav>
 
@@ -58,6 +61,38 @@
   </header>
 
   <main>
+    <section class="featured-banner" aria-label="Featured lessons banner">
+      <div class="featured-copy">
+        <span class="section-badge">Featured lessons</span>
+        <h2>Build real music skills one concept at a time.</h2>
+        <p>
+          Learn the building blocks of melody, rhythm, harmony, and form in a simple,
+          visual way designed for faster practice and stronger recall.
+        </p>
+        <div class="featured-stats">
+          <div class="stat-pill"><strong>4</strong><span>core units</span></div>
+          <div class="stat-pill"><strong>10</strong><span>key lessons</span></div>
+          <div class="stat-pill"><strong>1</strong><span>quiz check</span></div>
+        </div>
+      </div>
+
+      <div class="progress-panel" aria-live="polite">
+        <div class="progress-header">
+          <span>Lesson progress</span>
+          <span id="progressValue">0/4</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progressFill"></span>
+        </div>
+        <div class="progress-list">
+          <button class="progress-step active" type="button" data-step="1">1</button>
+          <button class="progress-step" type="button" data-step="2">2</button>
+          <button class="progress-step" type="button" data-step="3">3</button>
+          <button class="progress-step" type="button" data-step="4">4</button>
+        </div>
+      </div>
+    </section>
+
     <section id="topics" class="section">
       <div class="section-heading">
         <p class="label">Topics</p>
@@ -146,7 +181,7 @@
       </div>
 
       <div class="lesson-showcase" aria-label="Additional lesson topics">
-        <article class="lesson-card">
+        <article class="lesson-card selected" data-step="1" tabindex="0">
           <div class="lesson-visual keyboard-visual" aria-hidden="true">
             <span class="white-key active"></span>
             <span class="black-key"></span>
@@ -164,7 +199,7 @@
           </div>
         </article>
 
-        <article class="lesson-card">
+        <article class="lesson-card" data-step="2" tabindex="0">
           <div class="lesson-visual scale-visual" aria-hidden="true">
             <span class="scale-step step-1">1</span>
             <span class="scale-step step-2">2</span>
@@ -181,7 +216,7 @@
           </div>
         </article>
 
-        <article class="lesson-card">
+        <article class="lesson-card" data-step="3" tabindex="0">
           <div class="lesson-visual chord-visual" aria-hidden="true">
             <span class="chord-dot dot-top"></span>
             <span class="chord-dot dot-mid"></span>
@@ -195,7 +230,7 @@
           </div>
         </article>
 
-        <article class="lesson-card">
+        <article class="lesson-card" data-step="4" tabindex="0">
           <div class="lesson-visual rhythm-visual" aria-hidden="true">
             <span class="beat beat-1"></span>
             <span class="beat beat-2"></span>
@@ -270,6 +305,65 @@
       });
     });
 
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('musicTheoryTheme');
+
+    function renderTheme(theme) {
+      const isDark = theme === 'dark';
+      body.classList.toggle('dark-mode', isDark);
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+    }
+
+    if (savedTheme) {
+      renderTheme(savedTheme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+      localStorage.setItem('musicTheoryTheme', nextTheme);
+      renderTheme(nextTheme);
+    });
+
+    const lessonCards = document.querySelectorAll('.lesson-card');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    const progressValue = document.getElementById('progressValue');
+    const progressFill = document.getElementById('progressFill');
+
+    function updateProgress() {
+      const completed = [...lessonCards].filter((card) => card.classList.contains('selected')).length;
+      const total = lessonCards.length;
+      const percent = (completed / total) * 100;
+
+      progressValue.textContent = `${completed}/${total}`;
+      progressFill.style.width = `${percent}%`;
+
+      progressSteps.forEach((step) => {
+        const stepIndex = Number(step.dataset.step);
+        const done = stepIndex <= completed;
+        step.classList.toggle('active', done);
+        step.classList.toggle('done', done);
+      });
+    }
+
+    lessonCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('selected');
+        updateProgress();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          card.classList.toggle('selected');
+          updateProgress();
+        }
+      });
+    });
+
+    updateProgress();
+
     const staff = document.getElementById('musicStaff');
     const noteSpecs = [
       { label: 'E4', top: 82 },
@@ -313,11 +407,11 @@
         note.animate(
           [
             { transform: 'translateY(0px) scale(1)', opacity: 0.7 },
-            { transform: 'translateY(-10px) scale(1.08)', opacity: 1 },
+            { transform: 'translateY(-12px) scale(1.1)', opacity: 1 },
             { transform: 'translateY(0px) scale(1)', opacity: 0.7 }
           ],
           {
-            duration: 700,
+            duration: 720,
             delay: index * 120,
             easing: 'ease-in-out',
             iterations: 2
