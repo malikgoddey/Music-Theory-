@@ -1,64 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Theory Made Easy</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Theory Made Easy</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <nav class="topbar">
+      <div class="brand">Music Theory Made Easy</div>
+      <div class="nav-links">
+        <a href="#topics">Topics</a>
+        <a href="#visualizer">Visualizer</a>
+        <a href="#quiz">Quiz</a>
+      </div>
+    </nav>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Music Theory Made Easy</h1>
-        <p>Your interactive guide to reading and understanding music.</p>
-    </header>
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Learn the language of music</p>
+        <h1>Build your ear, eye, and theory skills.</h1>
+        <p class="subtitle">
+          Explore notes, scales, rhythm, and harmony with clear explanations,
+          visual examples, and practice questions.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#topics">Start learning</a>
+          <a class="secondary-btn" href="#quiz">Take the quiz</a>
+        </div>
+      </div>
 
-    <!-- Main Content Container -->
-    <main>
-        <!-- Topic Card 1: Staff & Notes -->
-        <section class="card" onclick="toggleCard(this)">
-            <h2>1. The Staff & Note Names</h2>
-            <p class="summary">Click to learn about lines, spaces, and the treble/bass clefs.</p>
-            <div class="details">
-                <p><strong>The Staff:</strong> Made of 5 lines and 4 spaces.</p>
-                <p><strong>Treble Clef Lines (Bottom to Top):</strong> E, G, B, D, F (Every Good Boy Does Fine)</p>
-                <p><strong>Treble Clef Spaces:</strong> F, A, C, E (FACE)</p>
-            </div>
-        </section>
+      <div class="hero-card">
+        <div class="mini-header">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="mini-staff" aria-label="Sample treble staff">
+          <span class="mini-line"></span>
+          <span class="mini-line"></span>
+          <span class="mini-line"></span>
+          <span class="mini-line"></span>
+          <span class="mini-line"></span>
+          <span class="mini-note note-e">E</span>
+          <span class="mini-note note-g">G</span>
+          <span class="mini-note note-b">B</span>
+        </div>
+        <ul class="hero-points">
+          <li>Notes</li>
+          <li>Scales</li>
+          <li>Rhythm</li>
+          <li>Harmony</li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-        <!-- Topic Card 2: Scales -->
-        <section class="card" onclick="toggleCard(this)">
-            <h2>2. Major & Minor Scales</h2>
-            <p class="summary">Click to learn the formula behind major and minor scales.</p>
-            <div class="details">
-                <p><strong>Major Scale Formula:</strong> Whole - Whole - Half - Whole - Whole - Whole - Half (W-W-H-W-W-W-H)</p>
-                <p><strong>Natural Minor Formula:</strong> Whole - Half - Whole - Whole - Half - Whole - Whole (W-H-W-W-H-W-W)</p>
-            </div>
-        </section>
+  <main>
+    <section id="topics" class="section">
+      <div class="section-heading">
+        <p class="label">Topics</p>
+        <h2>Core music theory essentials</h2>
+      </div>
 
-        <!-- Topic Card 3: Time Signatures -->
-        <section class="card" onclick="toggleCard(this)">
-            <h2>3. Time Signatures</h2>
-            <p class="summary">Click to understand beats per measure and note values.</p>
-            <div class="details">
-                <p><strong>Top Number:</strong> How many beats are in each measure.</p>
-                <p><strong>Bottom Number:</strong> Which note value gets one beat (e.g., 4 = quarter note).</p>
-                <p><strong>Common Time (4/4):</strong> 4 quarter-note beats per measure.</p>
-            </div>
-        </section>
-    </main>
+      <div class="topics-grid">
+        <article class="topic-card active">
+          <button class="topic-toggle" type="button" aria-expanded="true">
+            <span>1. The Staff & Note Names</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="topic-content">
+            <p><strong>The Staff:</strong> Music is written on five lines and four spaces.</p>
+            <p><strong>Treble Clef Lines:</strong> E, G, B, D, F (Every Good Boy Does Fine)</p>
+            <p><strong>Treble Clef Spaces:</strong> F, A, C, E (FACE)</p>
+            <p><strong>Bass Clef Lines:</strong> G, B, D, F, A (Good Boys Do Fine Always)</p>
+          </div>
+        </article>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Music Theory App. Keep learning!</p>
-    </footer>
+        <article class="topic-card">
+          <button class="topic-toggle" type="button" aria-expanded="false">
+            <span>2. Major & Minor Scales</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="topic-content" hidden>
+            <p><strong>Major formula:</strong> Whole - Whole - Half - Whole - Whole - Whole - Half</p>
+            <p><strong>Natural minor formula:</strong> Whole - Half - Whole - Whole - Half - Whole - Whole</p>
+            <p><strong>Example:</strong> C major: C D E F G A B C</p>
+            <p><strong>Example:</strong> A minor: A B C D E F G A</p>
+          </div>
+        </article>
 
-    <!-- Simple JavaScript for Interactivity -->
-    <script>
-        function toggleCard(cardElement) {
-            cardElement.classList.toggle('active');
+        <article class="topic-card">
+          <button class="topic-toggle" type="button" aria-expanded="false">
+            <span>3. Intervals</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="topic-content" hidden>
+            <p><strong>Interval:</strong> The distance between two notes.</p>
+            <p><strong>Unison:</strong> Same pitch</p>
+            <p><strong>Second:</strong> One step apart</p>
+            <p><strong>Third:</strong> Common in chords and melodies</p>
+            <p><strong>Perfect fifth:</strong> Bright, stable sound</p>
+          </div>
+        </article>
+
+        <article class="topic-card">
+          <button class="topic-toggle" type="button" aria-expanded="false">
+            <span>4. Key Signatures & Accidentals</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="topic-content" hidden>
+            <p><strong>Key signature:</strong> Tells you which notes are sharp or flat in a piece.</p>
+            <p><strong>Sharp (#):</strong> Raises a note by a half step.</p>
+            <p><strong>Flat (b):</strong> Lowers a note by a half step.</p>
+            <p><strong>Natural (♮):</strong> Cancels a sharp or flat.</p>
+          </div>
+        </article>
+
+        <article class="topic-card">
+          <button class="topic-toggle" type="button" aria-expanded="false">
+            <span>5. Rhythm & Time Signatures</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="topic-content" hidden>
+            <p><strong>Top number:</strong> Beats per measure.</p>
+            <p><strong>Bottom number:</strong> Which note value gets one beat.</p>
+            <p><strong>4/4 time:</strong> Four quarter-note beats per measure.</p>
+            <p><strong>3/4 time:</strong> Common in waltzes and dances.</p>
+          </div>
+        </article>
+
+        <article class="topic-card">
+          <button class="topic-toggle" type="button" aria-expanded="false">
+            <span>6. Chords & Harmony</span>
+            <span class="chevron">⌄</span>
+          </button>
+          <div class="topic-content" hidden>
+            <p><strong>Chord:</strong> Three or more notes played together.</p>
+            <p><strong>Triad:</strong> Root, third, and fifth.</p>
+            <p><strong>C major triad:</strong> C - E - G</p>
+            <p><strong>Major vs minor:</strong> Major sounds bright, minor sounds darker or sadder.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="visualizer" class="section">
+      <div class="section-heading">
+        <p class="label">Visualizer</p>
+        <h2>See notes on the staff</h2>
+      </div>
+
+      <div class="visualizer-panel">
+        <div class="staff-toolbar">
+          <div class="clef-badge">Treble Clef</div>
+          <button class="pulse-btn" type="button" id="animateNotes">Animate notes</button>
+        </div>
+        <div class="music-staff" id="musicStaff" aria-label="Music staff with note examples"></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="section">
+      <div class="section-heading">
+        <p class="label">Quiz</p>
+        <h2>Test your knowledge</h2>
+      </div>
+
+      <div class="quiz-card">
+        <div id="quizContainer" class="quiz-container"></div>
+        <div class="quiz-controls">
+          <button id="checkAnswer" class="primary-btn" type="button">Check answer</button>
+          <button id="nextQuestion" class="secondary-btn" type="button">Next question</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Music Theory App. Keep learning.</p>
+  </footer>
+
+  <script>
+    const topicCards = document.querySelectorAll('.topic-card');
+
+    topicCards.forEach((card) => {
+      const button = card.querySelector('.topic-toggle');
+      const content = card.querySelector('.topic-content');
+
+      button.addEventListener('click', () => {
+        const isOpen = card.classList.contains('active');
+
+        topicCards.forEach((item) => {
+          item.classList.remove('active');
+          item.querySelector('.topic-toggle').setAttribute('aria-expanded', 'false');
+          item.querySelector('.topic-content').hidden = true;
+        });
+
+        if (!isOpen) {
+          card.classList.add('active');
+          button.setAttribute('aria-expanded', 'true');
+          content.hidden = false;
         }
-    </script>
+      });
+    });
+
+    const staff = document.getElementById('musicStaff');
+    const noteSpecs = [
+      { label: 'E4', top: 82 },
+      { label: 'G4', top: 70 },
+      { label: 'B4', top: 58 },
+      { label: 'D5', top: 46 },
+      { label: 'F5', top: 34 }
+    ];
+
+    function drawStaff() {
+      const lines = Array.from({ length: 5 }, (_, index) => {
+        const line = document.createElement('span');
+        line.className = 'staff-line';
+        line.style.top = `${index * 22 + 18}px`;
+        return line;
+      });
+
+      lines.forEach((line) => staff.appendChild(line));
+
+      const trebleClef = document.createElement('div');
+      trebleClef.className = 'treble-clef';
+      trebleClef.textContent = '𝄞';
+      staff.appendChild(trebleClef);
+
+      noteSpecs.forEach((note, index) => {
+        const noteHead = document.createElement('div');
+        noteHead.className = 'note-head';
+        noteHead.style.top = `${note.top}px`;
+        noteHead.style.left = `${110 + index * 42}px`;
+        noteHead.textContent = note.label;
+        staff.appendChild(noteHead);
+      });
+    }
+
+    drawStaff();
+
+    const animateNotesButton = document.getElementById('animateNotes');
+    animateNotesButton.addEventListener('click', () => {
+      const noteHeads = document.querySelectorAll('.note-head');
+      noteHeads.forEach((note, index) => {
+        note.animate(
+          [
+            { transform: 'translateY(0px) scale(1)', opacity: 0.7 },
+            { transform: 'translateY(-10px) scale(1.08)', opacity: 1 },
+            { transform: 'translateY(0px) scale(1)', opacity: 0.7 }
+          ],
+          {
+            duration: 700,
+            delay: index * 120,
+            easing: 'ease-in-out',
+            iterations: 2
+          }
+        );
+      });
+    });
+
+    const quizQuestions = [
+      {
+        question: 'Which note sits on the first line of the treble staff?',
+        options: ['E', 'G', 'F', 'A'],
+        answer: 'E',
+        explanation: 'The first line of the treble clef is E, which is why the acronym “Every Good Boy Does Fine” starts with E.'
+      },
+      {
+        question: 'What is the formula for a major scale?',
+        options: ['W W H W W W H', 'W H W W H W W', 'H W H W W H W', 'W W W H W W H'],
+        answer: 'W W H W W W H',
+        explanation: 'A major scale follows whole-step, whole-step, half-step, whole, whole, whole, half.'
+      },
+      {
+        question: 'What does the top number in a time signature tell you?',
+        options: ['Which note gets one beat', 'How many beats are in each measure', 'How fast to play', 'How many notes are in the bar'],
+        answer: 'How many beats are in each measure',
+        explanation: 'The top number tells you how many beats appear in each measure.'
+      },
+      {
+        question: 'Which note is a half step higher than C?',
+        options: ['C#', 'D♭', 'B', 'A'],
+        answer: 'C#',
+        explanation: 'A half step above C is C sharp, which is the same pitch as D flat in enharmonic spelling.'
+      },
+      {
+        question: 'What is a chord made of?',
+        options: ['A single note repeated', 'Three or more notes played together', 'Only rhythm patterns', 'Two beats per measure'],
+        answer: 'Three or more notes played together',
+        explanation: 'A chord is commonly built from three or more notes heard together, like a triad.'
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answeredCurrentQuestion = false;
+
+    const quizContainer = document.getElementById('quizContainer');
+    const checkAnswerButton = document.getElementById('checkAnswer');
+    const nextQuestionButton = document.getElementById('nextQuestion');
+
+    function renderQuestion() {
+      const current = quizQuestions[currentQuestionIndex];
+      quizContainer.innerHTML = '';
+      answeredCurrentQuestion = false;
+
+      const questionCard = document.createElement('div');
+      questionCard.className = 'question-card';
+
+      const questionTitle = document.createElement('h3');
+      questionTitle.textContent = `Question ${currentQuestionIndex + 1}`;
+      questionCard.appendChild(questionTitle);
+
+      const prompt = document.createElement('p');
+      prompt.className = 'question-prompt';
+      prompt.textContent = current.question;
+      questionCard.appendChild(prompt);
+
+      const choices = document.createElement('div');
+      choices.className = 'choices';
+
+      current.options.forEach((option) => {
+        const label = document.createElement('label');
+        label.className = 'choice';
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'answer';
+        radio.value = option;
+
+        const text = document.createElement('span');
+        text.textContent = option;
+
+        label.appendChild(radio);
+        label.appendChild(text);
+        choices.appendChild(label);
+      });
+
+      questionCard.appendChild(choices);
+
+      const feedback = document.createElement('p');
+      feedback.className = 'quiz-feedback';
+      feedback.hidden = true;
+      questionCard.appendChild(feedback);
+
+      quizContainer.appendChild(questionCard);
+    }
+
+    function checkAnswer() {
+      const current = quizQuestions[currentQuestionIndex];
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const feedback = document.querySelector('.quiz-feedback');
+
+      if (answeredCurrentQuestion) {
+        return;
+      }
+
+      if (!selected) {
+        feedback.textContent = 'Please select an answer before checking.';
+        feedback.hidden = false;
+        feedback.classList.add('warning');
+        return;
+      }
+
+      const isCorrect = selected.value === current.answer;
+      feedback.hidden = false;
+      feedback.classList.remove('warning', 'success', 'error');
+
+      if (isCorrect) {
+        feedback.classList.add('success');
+        feedback.textContent = `Correct! ${current.explanation}`;
+        score += 1;
+      } else {
+        feedback.classList.add('error');
+        feedback.textContent = `Not quite. ${current.explanation}`;
+      }
+
+      const choiceLabels = document.querySelectorAll('.choice');
+      choiceLabels.forEach((label) => {
+        const input = label.querySelector('input');
+        const text = label.querySelector('span');
+        const isAnswer = input.value === current.answer;
+
+        if (isAnswer) {
+          text.classList.add('correct-answer');
+        }
+
+        if (input.checked && input.value !== current.answer) {
+          text.classList.add('wrong-answer');
+        }
+
+        input.disabled = true;
+      });
+
+      answeredCurrentQuestion = true;
+    }
+
+    function nextQuestion() {
+      if (!answeredCurrentQuestion) {
+        const feedback = document.querySelector('.quiz-feedback');
+        if (feedback) {
+          feedback.textContent = 'Please check your answer before continuing.';
+          feedback.hidden = false;
+          feedback.classList.remove('success', 'error');
+          feedback.classList.add('warning');
+        }
+        return;
+      }
+
+      currentQuestionIndex += 1;
+
+      if (currentQuestionIndex < quizQuestions.length) {
+        renderQuestion();
+      } else {
+        quizContainer.innerHTML = `
+          <div class="results-card">
+            <h3>Quiz complete!</h3>
+            <p>Your score: <strong>${score}</strong> / ${quizQuestions.length}</p>
+            <p>${score === quizQuestions.length ? 'Excellent work — you know your music theory basics!' : 'Nice effort — review the topics and try again to improve your score.'}</p>
+          </div>
+        `;
+        checkAnswerButton.disabled = true;
+        nextQuestionButton.textContent = 'Restart quiz';
+        nextQuestionButton.onclick = () => {
+          currentQuestionIndex = 0;
+          score = 0;
+          answeredCurrentQuestion = false;
+          checkAnswerButton.disabled = false;
+          nextQuestionButton.textContent = 'Next question';
+          nextQuestionButton.onclick = null;
+          nextQuestionButton.addEventListener('click', nextQuestion);
+          renderQuestion();
+        };
+      }
+    }
+
+    checkAnswerButton.addEventListener('click', checkAnswer);
+    nextQuestionButton.addEventListener('click', nextQuestion);
+
+    renderQuestion();
+  </script>
 </body>
 </html>
