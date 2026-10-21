@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Theory Made Easy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Music Theory Made Easy</h1>
+        <p>Your interactive guide to reading and understanding music.</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+        <!-- Topic Card 1: Staff & Notes -->
+        <section class="card" onclick="toggleCard(this)">
+            <h2>1. The Staff & Note Names</h2>
+            <p class="summary">Click to learn about lines, spaces, and the treble/bass clefs.</p>
+            <div class="details">
+                <p><strong>The Staff:</strong> Made of 5 lines and 4 spaces.</p>
+                <p><strong>Treble Clef Lines (Bottom to Top):</strong> E, G, B, D, F (Every Good Boy Does Fine)</p>
+                <p><strong>Treble Clef Spaces:</strong> F, A, C, E (FACE)</p>
+            </div>
+        </section>
+
+        <!-- Topic Card 2: Scales -->
+        <section class="card" onclick="toggleCard(this)">
+            <h2>2. Major & Minor Scales</h2>
+            <p class="summary">Click to learn the formula behind major and minor scales.</p>
+            <div class="details">
+                <p><strong>Major Scale Formula:</strong> Whole - Whole - Half - Whole - Whole - Whole - Half (W-W-H-W-W-W-H)</p>
+                <p><strong>Natural Minor Formula:</strong> Whole - Half - Whole - Whole - Half - Whole - Whole (W-H-W-W-H-W-W)</p>
+            </div>
+        </section>
+
+        <!-- Topic Card 3: Time Signatures -->
+        <section class="card" onclick="toggleCard(this)">
+            <h2>3. Time Signatures</h2>
+            <p class="summary">Click to understand beats per measure and note values.</p>
+            <div class="details">
+                <p><strong>Top Number:</strong> How many beats are in each measure.</p>
+                <p><strong>Bottom Number:</strong> Which note value gets one beat (e.g., 4 = quarter note).</p>
+                <p><strong>Common Time (4/4):</strong> 4 quarter-note beats per measure.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Music Theory App. Keep learning!</p>
+    </footer>
+
+    <!-- Simple JavaScript for Interactivity -->
+    <script>
+        function toggleCard(cardElement) {
+            cardElement.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
